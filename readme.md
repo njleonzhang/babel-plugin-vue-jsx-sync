@@ -4,6 +4,30 @@
 * [Demo](https://njleonzhang.github.io/babel-plugin-vue-jsx-sync/.)
 
 # Usage
+
+* install
+```
+yarn add -D babel-plugin-vue-jsx-sync
+npm install babel-plugin-vue-jsx-sync --save-dev
+```
+
+* add the plugin to `.babelrc`
+```
+{
+  "presets": [
+    ["env", {
+      "modules": false
+    }],
+    "stage-2"
+  ],
+  "plugins": ["transform-runtime", "vue-jsx-sync", "transform-vue-jsx"],
+  ......
+}
+}
+```
+
+* use in jsx
+
 ```
 function a() {
   return (
