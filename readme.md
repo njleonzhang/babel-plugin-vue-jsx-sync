@@ -10,6 +10,7 @@ function a() {
     </div>
   )
 }
+
 ```
 
 is complied to:
@@ -24,8 +25,8 @@ function a() {
       {
         attrs: { visible: this.test },
         on: {
-          "visible:update": $$val => {
-            this.visible = $$val;
+          "update:visible": $$val => {
+            this.test = $$val;
           }
         }
       },
@@ -41,4 +42,10 @@ function a() {
 npm install -g parcel-bundler
 npm install
 npm run dev
+```
+
+# build doc
+
+```
+npm run doc
 ```

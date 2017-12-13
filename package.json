@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel index.html",
+    "doc": "cd docs; rm -rf *;parcel build ../index.html --out-dir .;cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "njLeonZhang",
