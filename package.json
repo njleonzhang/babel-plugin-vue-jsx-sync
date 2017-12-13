@@ -1,0 +1,21 @@
+{
+  "name": "babel-plugin-vue-jsx-sync",
+  "version": "0.0.1",
+  "description": "babel plugin to support vue jsx sync modifier",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "njLeonZhang",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-plugin-jsx-v-model": "^2.0.3",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.0",
+    "babel-preset-env": "^1.6.1",
+    "prismjs": "^1.9.0"
+  }
+}
