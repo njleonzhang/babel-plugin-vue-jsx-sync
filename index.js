@@ -7,12 +7,6 @@ var genListener = function genListener(t, event, body) {
   )
 }
 
-var firstUpperCase = function firstUpperCase(str){
-  return str.replace(/^\S/, function(s) {
-    return s.toUpperCase()
-  })
-}
-
 var genAssignmentCode = function genAssignmentCode(t, model) {
   return t.ExpressionStatement(t.AssignmentExpression('=', model, t.Identifier('$$val')))
 }
@@ -23,7 +17,7 @@ module.exports = function(babel) {
   return {
     inherits: require('babel-plugin-syntax-jsx'),
     visitor: {
-      JSXOpeningElement(path) {
+      JSXOpeningElement: function(path) {
         path.get('attributes').forEach(function(attr) {
           try {
             let matched = attr.node.name.name.match(syncRe)
@@ -31,8 +25,16 @@ module.exports = function(babel) {
               let prop = matched[1]
               attr.node.name.name = prop
 
-              let model = t.MemberExpression(t.ThisExpression(), t.Identifier(prop))
-              let listener = genListener(t, firstUpperCase(prop) + ':update',
+              let model
+
+              attr.traverse({
+                JSXExpressionContainer: function(path) {
+                  console.log(path)
+                  model = path.node.expression
+                }
+              })
+
+              let listener = genListener(t, 'Update:' + prop,
                 [genAssignmentCode(t, model)])
               attr.insertAfter(listener)
             }
