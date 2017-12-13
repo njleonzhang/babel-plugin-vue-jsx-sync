@@ -17,14 +17,14 @@ var genAssignmentCode = function genAssignmentCode(t, model) {
   return t.ExpressionStatement(t.AssignmentExpression('=', model, t.Identifier('$$val')))
 }
 
-module.exports = (babel) => {
+module.exports = function(babel) {
   const t = babel.types
 
   return {
     inherits: require('babel-plugin-syntax-jsx'),
     visitor: {
       JSXOpeningElement(path) {
-        path.get('attributes').forEach(attr => {
+        path.get('attributes').forEach(function(attr) {
           try {
             let matched = attr.node.name.name.match(syncRe)
             if (matched) {
@@ -32,7 +32,8 @@ module.exports = (babel) => {
               attr.node.name.name = prop
 
               let model = t.MemberExpression(t.ThisExpression(), t.Identifier(prop))
-              let listener = genListener(t, firstUpperCase(prop) + ':update', [genAssignmentCode(t, model)])
+              let listener = genListener(t, firstUpperCase(prop) + ':update',
+                [genAssignmentCode(t, model)])
               attr.insertAfter(listener)
             }
           } catch (e) {
