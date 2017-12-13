@@ -38,6 +38,7 @@ function a() {
 }
 
 ```
+> Notice: we need to use `visible$sync` instead of `visible.sync`, which is not a illegal in `jsx`. 
 
 is complied to:
 
