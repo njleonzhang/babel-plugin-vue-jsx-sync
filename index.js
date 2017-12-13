@@ -29,7 +29,6 @@ module.exports = function(babel) {
 
               attr.traverse({
                 JSXExpressionContainer: function(path) {
-                  console.log(path)
                   model = path.node.expression
                 }
               })
