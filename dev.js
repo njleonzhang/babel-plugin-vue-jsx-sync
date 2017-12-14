@@ -12,6 +12,7 @@ function a() {
       <component visible$sync={this.test}>I am newbie</component>
       <component visible$sync={this.test[1]}>I am newbie</component>
       <component visible$sync={this.test.a}>I am newbie</component>
+      <component visible$sync={false}>I am newbie</component>
     </div>
   )
 }`

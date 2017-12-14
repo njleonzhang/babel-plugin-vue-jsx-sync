@@ -33,6 +33,11 @@ module.exports = function(babel) {
                 }
               })
 
+              if (!t.isMemberExpression(model)) {
+                console.error('You should use MemberExpression with sync modifier, prop [' + prop + '] on node [' + path.node.name.name + ']')
+                return
+              }
+
               let listener = genListener(t, 'Update:' + prop,
                 [genAssignmentCode(t, model)])
               attr.insertAfter(listener)
