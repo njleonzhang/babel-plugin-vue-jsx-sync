@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-vue-jsx-sync",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "babel plugin to support vue jsx sync modifier",
   "main": "index.js",
   "scripts": {
