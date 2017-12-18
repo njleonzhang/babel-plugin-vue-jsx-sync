@@ -8,6 +8,7 @@
 * install
 ```
 yarn add -D babel-plugin-vue-jsx-sync
+or 
 npm install babel-plugin-vue-jsx-sync --save-dev
 ```
 
