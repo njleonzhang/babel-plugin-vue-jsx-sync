@@ -1,4 +1,8 @@
 let syncRe = /(.*)\$sync/
+const camelizeRE = /-(\w)/g;
+const camelize = (str) => {
+  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '')
+}
 
 var genListener = function genListener(t, event, body) {
   return t.jSXAttribute(
@@ -38,7 +42,7 @@ module.exports = function(babel) {
                 return
               }
 
-              let listener = genListener(t, 'Update:' + prop,
+              let listener = genListener(t, 'Update:' + camelize(prop),
                 [genAssignmentCode(t, model)])
               attr.insertAfter(listener)
             }
